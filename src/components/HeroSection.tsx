@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import HeroContent from './HeroContent'
 import PuzzleGraphics from './PuzzleGraphics'
 import { heroSections } from '../data/heroData'
-import PartnersSection from './PartnersSection'
 
 const HeroSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
