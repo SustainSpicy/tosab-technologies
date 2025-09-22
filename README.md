@@ -1,69 +1,191 @@
-# React + TypeScript + Vite
+# Tosab Technologies - Official Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Tosab Technologies Logo](public/tosab.svg)
 
-Currently, two official plugins are available:
+**Powering Africa's Digital Future**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A modern, responsive website for Tosab Technologies - a leading provider of cloud and IT solutions, empowering businesses with innovative software, robust infrastructure, and strategic consulting to drive digital transformation.
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Modern React Architecture** - Built with React 19, TypeScript, and Vite
+- **Responsive Design** - Mobile-first approach with Tailwind CSS
+- **Multi-page Navigation** - React Router for seamless page transitions
+- **Dynamic Content** - Animated hero sections, counters, and carousels
+- **Interactive Components** - Testimonials carousel, FAQ accordion, and more
+- **Performance Optimized** - Fast loading with modern build tools
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🚀 Live Demo
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Visit the live website: [Tosab Technologies](https://sustainspicy.github.io/tosab-technologies)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📱 Pages
+
+- **Home** - Hero sections, services overview, projects showcase
+- **About Us** - Company mission, vision, and team information
+- **Industries** - Sectors we serve with detailed insights
+- **FAQ** - Frequently asked questions with interactive accordion
+- **Case Studies** - Real-world success stories and project outcomes
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React 19 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS v4
+- **Routing**: React Router DOM v7
+- **Icons**: Lucide React
+- **Animations**: Custom CSS animations with Tailwind
+- **Development**: ESLint, TypeScript, Hot Module Replacement
+
+## 🏗️ Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── Navigation.tsx   # Main navigation with dropdowns
+│   ├── HeroSection.tsx  # Dynamic hero with transitions
+│   ├── Footer.tsx       # Company footer with links
+│   └── ...
+├── pages/              # Page components for routing
+│   ├── HomePage.tsx    # Landing page
+│   ├── AboutPage.tsx   # About us page
+│   └── ...
+├── data/               # Static data and content
+│   ├── heroData.ts     # Hero section content
+│   ├── servicesData.ts # Services information
+│   └── ...
+├── constants/          # App-wide constants
+└── lib/               # Utility functions
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🚦 Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Prerequisites
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Node.js (v18 or higher)
+- npm or yarn package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/SustainSpicy/tosab-technologies.git
+   cd tosab-technologies
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   ```
+   http://localhost:5173
+   ```
+
+### Build for Production
+
+```bash
+# Build the project
+npm run build
+
+# Preview the build
+npm run preview
 ```
+
+## 🎨 Design System
+
+### Color Palette
+- **Primary Blue**: `#2E75B5` - Main brand color
+- **Accent Gold**: `#E3AF59` - Call-to-action elements
+- **Dark Gray**: `#454545` - Text and secondary elements
+- **Light Gray**: `#F8F9FA` - Background sections
+
+### Components
+- **Navigation**: Responsive navbar with hover dropdowns
+- **Hero Section**: Rotating content with smooth transitions
+- **Service Cards**: Interactive cards with hover effects
+- **Testimonials**: Auto-playing carousel with manual controls
+- **Analytics**: Animated counters with intersection observer
+
+## 🔧 Configuration
+
+### Environment Variables
+Create a `.env` file in the root directory:
+
+```env
+VITE_APP_TITLE=Tosab Technologies
+VITE_API_URL=your-api-url
+```
+
+### Tailwind Configuration
+The project uses Tailwind CSS v4 with custom configurations in `tailwind.config.js`.
+
+## 📦 Dependencies
+
+### Core Dependencies
+- `react` & `react-dom` - React framework
+- `react-router-dom` - Client-side routing
+- `tailwindcss` - Utility-first CSS framework
+- `lucide-react` - Icon library
+
+### Development Dependencies
+- `typescript` - Type safety
+- `vite` - Build tool and dev server
+- `eslint` - Code linting
+- `@types/*` - TypeScript definitions
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📝 Development Guidelines
+
+- Follow TypeScript best practices
+- Use functional components with hooks
+- Maintain responsive design principles
+- Write clean, self-documenting code
+- Test components thoroughly
+
+## 🐛 Issues & Support
+
+If you encounter any issues or have questions:
+
+1. Check the [Issues](https://github.com/SustainSpicy/tosab-technologies/issues) page
+2. Create a new issue with detailed description
+3. Contact the development team
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🏢 About Tosab Technologies
+
+Tosab Technologies is a leading provider of cloud and IT solutions, empowering businesses with innovative software, robust infrastructure, and strategic consulting to drive digital transformation across Africa and beyond.
+
+### Services
+- Cloud Infrastructure & Migration
+- Custom Software Development
+- DevOps & System Integration
+- IT Consulting & Strategy
+- Digital Transformation
+
+### Contact
+- **Address**: 3 Abubakar Koko Crescent, Asokoro, Abuja
+- **Email**: info@tosabtechnologies.com
+- **Phone**: +234 703 131 97
+
+---
+
+**Built with ❤️ by the Tosab Technologies Team**
+
+© 2025 Tosab Media Tech Ltd. All rights reserved.
