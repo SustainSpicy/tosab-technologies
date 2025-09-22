@@ -26,7 +26,7 @@ const HeroSection: React.FC = () => {
   const currentHero = heroSections[currentIndex]
 
   return (
-    <section className=" px-6 py-16 lg:px-20 lg:py-24 mt-[6rem]">
+    <section className=" px-6 py-16 lg:px-20 lg:py-24 ">
       <div className="relative flex items-center justify-between">
         <HeroContent
           topic={currentHero.topic}
