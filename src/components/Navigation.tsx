@@ -1,25 +1,25 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, {  useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import TosabLogo from './TosabLogo'
-import { navigationItems } from '../data/navigationData'
+// import { navigationItems } from '../data/navigationData'
 
 const Navigation: React.FC = () => {
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  // const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  const handleMouseEnter = (itemLabel: string) => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current)
-    }
-    setHoveredItem(itemLabel)
-  }
+  // const handleMouseEnter = (itemLabel: string) => {
+  //   if (hoverTimeoutRef.current) {
+  //     clearTimeout(hoverTimeoutRef.current)
+  //   }
+  //   setHoveredItem(itemLabel)
+  // }
 
-  const handleMouseLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
-      setHoveredItem(null)
-    }, 150) // Small delay to allow moving to dropdown
-  }
+  // const handleMouseLeave = () => {
+  //   hoverTimeoutRef.current = setTimeout(() => {
+  //     setHoveredItem(null)
+  //   }, 150) // Small delay to allow moving to dropdown
+  // }
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -45,7 +45,7 @@ const Navigation: React.FC = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-  
+   
 
         {/* Search Button */}
         <button
