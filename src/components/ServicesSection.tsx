@@ -3,11 +3,11 @@ import { services } from '../data/servicesData'
 
 const ServicesSection: React.FC = () => {
   return (
-    <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
+    <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-4" style={{ color: '#454545' }}>
+          <h2 className="text-3xl lg:text-4xl mb-4" style={{ color: '#454545' }}>
             Let's Solve It Together
           </h2>
         </div>

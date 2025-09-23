@@ -17,7 +17,7 @@ const SolutionsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="order-2 lg:order-1">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-8" style={{ color: '#454545' }}>
+              <h1 className="text-4xl lg:text-5xl mb-8" style={{ color: '#454545' }}>
                 Our Solutions
               </h1>
               <div className="space-y-6 text-lg leading-relaxed" style={{ color: '#454545' }}>
@@ -47,10 +47,10 @@ const SolutionsPage: React.FC = () => {
       {/* Solutions Introduction */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#454545' }}>
+          <h2 className="text-3xl lg:text-4xl mb-6" style={{ color: '#454545' }}>
             Solutions
           </h2>
-          <h3 className="text-xl lg:text-2xl font-semibold mb-8" style={{ color: '#2E75B5' }}>
+          <h3 className="text-xl lg:text-2xl mb-8" style={{ color: '#2E75B5' }}>
             Smart Technology. Real Impact.
           </h3>
           <p className="text-lg leading-relaxed" style={{ color: '#6B7280' }}>
@@ -65,7 +65,7 @@ const SolutionsPage: React.FC = () => {
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
         <div className="max-w-7xl mx-auto">
           <div className="mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ color: '#454545' }}>
+            <h2 className="text-3xl lg:text-4xl " style={{ color: '#454545' }}>
               Our Core Solutions
             </h2>
           </div>
@@ -73,7 +73,7 @@ const SolutionsPage: React.FC = () => {
           <div className="space-y-12">
             {coreSolutions.map((solution, index) => (
               <div key={solution.id} className="space-y-4">
-                <h3 className="text-xl lg:text-2xl font-bold" style={{ color: '#454545' }}>
+                <h3 className="text-xl lg:text-2xl " style={{ color: '#454545' }}>
                   {solution.title}
                 </h3>
                 <p className="text-base leading-relaxed max-w-5xl" style={{ color: '#6B7280' }}>
@@ -93,7 +93,7 @@ const SolutionsPage: React.FC = () => {
       {/* Built for Modern Industries */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-6" style={{ color: '#454545' }}>
+          <h2 className="text-2xl lg:text-3xl  mb-6" style={{ color: '#454545' }}>
             Built for Modern Industries
           </h2>
           <p className="text-lg leading-relaxed mb-8" style={{ color: '#6B7280' }}>
@@ -106,7 +106,7 @@ const SolutionsPage: React.FC = () => {
       {/* What You Can Expect */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-8" style={{ color: '#454545' }}>
+          <h2 className="text-2xl lg:text-3xl mb-8" style={{ color: '#454545' }}>
             What You Can Expect
           </h2>
           <ul className="space-y-4">
@@ -127,7 +127,7 @@ const SolutionsPage: React.FC = () => {
       {/* Let's Build the Right Solution */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold mb-6" style={{ color: '#454545' }}>
+          <h2 className="text-2xl lg:text-3xl mb-6" style={{ color: '#454545' }}>
             Let's Build the Right Solution for You
           </h2>
           <p className="text-lg leading-relaxed mb-8" style={{ color: '#6B7280' }}>

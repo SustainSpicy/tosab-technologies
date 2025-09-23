@@ -17,7 +17,7 @@ const CaseStudiesPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="order-2 lg:order-1 text-white">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-8">
+              <h1 className="text-4xl lg:text-5xl mb-8">
                 Case Studies
               </h1>
               <div className="space-y-6 text-lg leading-relaxed opacity-90">
@@ -65,7 +65,7 @@ const CaseStudiesPage: React.FC = () => {
                 {/* Left Content */}
                 <div className="space-y-8">
                   <div>
-                    <h3 className="text-xl lg:text-2xl font-bold mb-6" style={{ color: '#454545' }}>
+                    <h3 className="text-xl lg:text-2xl  mb-6" style={{ color: '#454545' }}>
                       {caseStudy.title}
                     </h3>
                   </div>
@@ -154,20 +154,35 @@ const CaseStudiesPage: React.FC = () => {
                 </div>
 
                 {/* Right Images */}
-                <div className="space-y-6">
-                  {caseStudy.images.map((image, imageIndex) => (
-                    <div 
-                      key={imageIndex}
-                      className="relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-                      style={{ backgroundColor: caseStudy.backgroundColor }}
-                    >
-                      <img
-                        src={image}
-                        alt={`${caseStudy.title} - Screenshot ${imageIndex + 1}`}
-                        className="w-full h-auto object-contain p-4"
-                      />
-                    </div>
-                  ))}
+                <div className="flex flex-wrap gap-4 items-center justify-center max-h-[33rem]">
+                  {caseStudy.images.map((image, imageIndex) => {
+                    const imageCount = caseStudy.images.length
+                    let imageClass = ""
+                    
+                    // Dynamic sizing based on number of images
+                    if (imageCount === 1) {
+                      imageClass = "w-full max-w-xl"
+                    } else if (imageCount === 2) {
+                      imageClass = "w-full sm:w-[calc(50%-0.5rem)] max-w-sm"
+                    } else if (imageCount === 3) {
+                      imageClass = "w-full sm:w-[calc(50.333% - 0.75rem)] lg:w-[calc(50.333%-0.75rem)] max-w-xs"
+                    } else {
+                      imageClass = "w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.5rem)] max-w-xs"
+                    }
+
+                    return (
+                      <div 
+                        key={imageIndex}
+                        className={`relative rounded-lg overflow-hidden transition-shadow duration-300 ${imageClass}`}
+                      >
+                        <img
+                          src={image}
+                          alt={`${caseStudy.title} - Screenshot ${imageIndex + 1}`}
+                          className="w-full h-auto object-contain p-4"
+                        />
+                      </div>
+                    )
+                  })}
                 </div>
               </div>
             </div>
@@ -176,7 +191,7 @@ const CaseStudiesPage: React.FC = () => {
       </div>
 
       {/* Call to Action Section */}
-      <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#2E75B5' }}>
+      {/* <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#2E75B5' }}>
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
             Ready to Start Your Success Story?
@@ -219,7 +234,7 @@ const CaseStudiesPage: React.FC = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <Footer />

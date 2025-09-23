@@ -32,27 +32,27 @@ export const faqs: FAQ[] = [
   },
   {
     id: 6,
-    question: "How do you ensure project security and data protection?",
-    answer: "We implement industry-standard security practices, including encryption, secure access controls, compliance frameworks, and regular security audits to protect your data and systems."
+    question: "6. How secure are your cloud and software solutions?",
+    answer: "Security is a top priority. We follow industry best practices in data protection, encryption, access control, and compliance with local and international regulations."
   },
   {
     id: 7,
-    question: "What is your typical project timeline?",
-    answer: "Project timelines vary based on scope and complexity. Simple integrations may take 2-4 weeks, while comprehensive digital transformation projects can span 3-6 months. We provide detailed timelines during consultation."
+    question: "7. Do you work with clients outside of Africa?",
+    answer: "Yes. While we focus on emerging markets in Africa, our services are available globally. We’re open to remote collaborations and international partnerships."
   },
   {
     id: 8,
-    question: "Do you provide ongoing support and maintenance?",
-    answer: "Yes, we offer comprehensive support packages including system monitoring, regular updates, performance optimization, and 24/7 technical support to ensure your systems run smoothly."
+    question: "8. What industries do you serve?" ,
+    answer: "We serve a wide range of industries including fintech, logistics, retail, education, health, public sector, and more."
   },
   {
     id: 9,
-    question: "Can you work with our existing technology stack?",
-    answer: "Absolutely. We're experienced in integrating with various existing systems and can work with your current technology stack while gradually modernizing and optimizing your infrastructure."
+    question: "9. What is your typical project timeline?",
+    answer: "Timelines vary based on project size and scope. A simple cloud deployment might take a few weeks, while full product development could span several months. We always provide a clear project roadmap before starting."
   },
   {
     id: 10,
-    question: "How do you handle project communication and updates?",
-    answer: "We maintain transparent communication through regular progress reports, scheduled check-ins, dedicated project managers, and collaborative tools to keep you informed throughout the project lifecycle."
+    question: "10. How can we get started with Tosab Technologies?",
+    answer: "Just reach out via our contact form, email, or phone. We'll schedule a discovery session to understand your goals and recommend a solution tailored to your business."
   }
 ]

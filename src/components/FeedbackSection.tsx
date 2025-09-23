@@ -34,7 +34,7 @@ const FeedbackSection: React.FC = () => {
       {/* Blue Header */}
       <div className="w-full py-12 px-6 lg:px-20" style={{ backgroundColor: '#' }}>
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-black">
+          <h2 className="text-3xl lg:text-4xl  text-black">
             Don't Just Take Our Word For It
           </h2>
         </div>

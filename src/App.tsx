@@ -7,6 +7,8 @@ import CaseStudiesPage from './pages/CaseStudiesPage'
 import ServicesPage from './pages/ServicesPage'
 import SolutionsPage from './pages/SolutionsPage'
 import BlogPage from './pages/BlogPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   )

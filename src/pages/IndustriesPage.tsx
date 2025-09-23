@@ -12,18 +12,18 @@ const IndustriesPage: React.FC = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
+      <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="order-2 lg:order-1">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-8" style={{ color: '#454545' }}>
+              <h1 className="text-4xl lg:text-5xl mb-8" style={{ color: '#454545' }}>
                 Industries
               </h1>
               <div className="space-y-6 text-lg leading-relaxed" style={{ color: '#454545' }}>
                 <p>
-                  At Tosab Technologies, we deliver tailored IT and cloud solutions across key industries. 
-                  From finance and logistics to education and retail, we help businesses in emerging 
+                  At Tosab Technologies, we deliver tailored IT and cloud solutions across key industries.
+                  From finance and logistics to education and retail, we help businesses in emerging
                   markets leverage technology to solve real-world challenges and scale with confidence.
                 </p>
               </div>
@@ -44,28 +44,32 @@ const IndustriesPage: React.FC = () => {
       </section>
 
       {/* Industries Sections */}
-      <div className="w-full">
+      <div className="w-full" style={{
+              backgroundColor: '#F8F9FA'
+            }}>
         {industries.slice(1).map((industry, index) => (
-          <section 
+          <section
             key={industry.title}
-            className="w-full py-16 px-6 lg:px-20" 
-            style={{ 
-              backgroundColor: index % 2 === 0 ? '#FFFFFF' : '#F8F9FA' 
-            }}
+            className="w-full py-16 px-6 lg:px-20"
+
           >
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Content */}
-                <div className={`space-y-6 ${industry.position === 'right' ? 'order-1 lg:order-1' : 'order-2 lg:order-2'}`}>
-                  <h2 className="text-3xl lg:text-4xl font-bold" style={{ color: '#454545' }}>
+                <div className={`space-y-6 ${industry.position === 'right' ? 'order-1 lg:order-1' : 'order-2 lg:order-2'} py-16 px-12`}
+                  style={{
+                    backgroundColor: '#FFFFFF'
+                  }}
+                >
+                  <h2 className="text-3xl lg:text-4xl" style={{ color: '#454545' }}>
                     {industry.title}
                   </h2>
                   <p className="text-lg leading-relaxed" style={{ color: '#6B7280' }}>
                     {industry.description}
                   </p>
-                  
+
                   {/* CTA Button */}
-                  <div className="pt-4">
+                  {/* <div className="pt-4">
                     <button
                       className="px-8 py-3 rounded-lg font-semibold transition-colors"
                       style={{
@@ -76,8 +80,8 @@ const IndustriesPage: React.FC = () => {
                       onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#2E75B5'}
                     >
                       Learn More
-                    </button>
-                  </div>
+                    </button> */}
+                  {/* </div> */}
                 </div>
 
                 {/* Image */}
@@ -103,7 +107,7 @@ const IndustriesPage: React.FC = () => {
             Ready to Transform Your Industry?
           </h2>
           <p className="text-lg mb-8 opacity-90">
-            Whatever your sector, we have the expertise and technology solutions to help you innovate, 
+            Whatever your sector, we have the expertise and technology solutions to help you innovate,
             scale, and succeed in today's digital landscape.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

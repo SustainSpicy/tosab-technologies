@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import TosabLogo from './TosabLogo'
 
 const Footer: React.FC = () => {
@@ -120,8 +121,8 @@ const Footer: React.FC = () => {
                 </svg>
                 Services
               </a>
-              <a 
-                href="#" 
+              <Link 
+                to="/privacy-policy" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"
                 style={{ color: '#6B7280' }}
               >
@@ -129,7 +130,7 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
                 Privacy Policy
-              </a>
+              </Link>
               <a 
                 href="#" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"

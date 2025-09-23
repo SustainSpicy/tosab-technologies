@@ -5,7 +5,7 @@ const ProjectsSection: React.FC = () => {
   return (
     <section className="w-full">
       {/* Main Content - White Background */}
-      <div className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
+      <div className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -34,7 +34,7 @@ const ProjectsSection: React.FC = () => {
                 </div>
 
                 {/* Project Title */}
-                <h3 className="text-xl font-semibold mb-3 transition-colors duration-300 group-hover:text-blue-600" 
+                <h3 className="text-xl  mb-3 transition-colors duration-300 group-hover:text-blue-600" 
                     style={{ color: '#454545' }}>
                   {project.title}
                 </h3>

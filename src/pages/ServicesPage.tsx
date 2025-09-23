@@ -17,7 +17,7 @@ const ServicesPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="order-2 lg:order-1">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-8" style={{ color: '#454545' }}>
+              <h1 className="text-4xl lg:text-5xl  mb-8" style={{ color: '#454545' }}>
                 Our Services
               </h1>
               <div className="space-y-6 text-lg leading-relaxed" style={{ color: '#454545' }}>
@@ -47,7 +47,7 @@ const ServicesPage: React.FC = () => {
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold" style={{ color: '#454545' }}>
+            <h2 className="text-3xl lg:text-4xl " style={{ color: '#454545' }}>
               Let's Solve It Together
             </h2>
           </div>
@@ -70,7 +70,7 @@ const ServicesPage: React.FC = () => {
                     />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-bold mb-2" style={{ color: '#454545' }}>
+                    <h3 className="text-xl mb-2" style={{ color: '#454545' }}>
                       {service.title}
                     </h3>
                     <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>
@@ -133,7 +133,7 @@ const ServicesPage: React.FC = () => {
                 )}
 
                 {/* CTA Button */}
-                <div className="pt-4">
+                {/* <div className="pt-4">
                   <button
                     className="px-6 py-2 rounded-lg font-semibold text-sm transition-colors"
                     style={{
@@ -145,7 +145,7 @@ const ServicesPage: React.FC = () => {
                   >
                     Learn More
                   </button>
-                </div>
+                </div> */}
               </div>
             ))}
           </div>
@@ -153,7 +153,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#2E75B5' }}>
+      {/* <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#2E75B5' }}>
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
             Ready to Transform Your Business?
@@ -196,7 +196,7 @@ const ServicesPage: React.FC = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Footer */}
       <Footer />

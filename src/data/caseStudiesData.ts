@@ -42,7 +42,7 @@ export const caseStudies: CaseStudy[] = [
       monitoring: "DataDog, ELK Stack",
       security: "Auth0, AWS WAF"
     },
-    images: ["/case-study/image1.png", "/case-study/image2.png"],
+    images: ["/case-study/image1.png","/case-study/image3.png", "/case-study/image2.png"],
     backgroundColor: "#E3F2FD"
   },
   {
@@ -64,7 +64,7 @@ export const caseStudies: CaseStudy[] = [
       devops: "ArgoCD, Jenkins",
       security: "Vault by HashiCorp, Snyk"
     },
-    images: ["/case-study/image3.png"],
+    images: ["/case-study/image4.png"],
     backgroundColor: "#E8F5E8"
   },
   {
@@ -86,7 +86,81 @@ export const caseStudies: CaseStudy[] = [
       monitoring: "Prometheus, Grafana",
       security: "OAuth 2.0, JWT"
     },
-    images: ["/case-study/image4.png"],
+    images: ["/case-study/image5.png"],
     backgroundColor: "#FFF3E0"
-  }
+  },
+  // {
+  //   id: "solutions",
+  //   category: "solutions",
+  //   title: "Cloud Services & Infrastructure",
+  //   overview: {
+  //     timeline: "10 months",
+  //     teamSize: "12 members",
+  //     projectManagement: "Agile Scrum",
+  //     developmentMethodology: "Kanban"
+  //   },
+  //   techStack: {
+  //     frontend: "Angular 17",
+  //     backend: "Python (Django), Node.js",
+  //     database: "PostgreSQL, Redis",
+  //     cloud: "Google Cloud Platform",
+  //     devops: "GitLab CI/CD, Docker, Kubernetes",
+  //     monitoring: "Prometheus, Grafana",
+  //     security: "OAuth 2.0, JWT"
+  //   },
+  //   images: ["/case-study/image4.png"],
+  //   backgroundColor: "#FFF3E0"
+  // },
+  // Solutions
+
+  // 1. Cloud Services & Infrastructure
+  // Technologies & Platforms:
+  // Multi-cloud expertise (AWS, Azure, GCP)
+  // Kubernetes & Docker
+  // Terraform, Ansible, Pulumi
+  // AWS EKS, Azure AKS, GKE
+  // Service Mesh (Istio, Linkerd)
+  
+  // 2. Digital Transformation
+  // Modern Tech Stack:
+  // Frontend: React, Vue.js, Next.js, Angular
+  // Backend: Node.js, Python, Go, Java
+  // Mobile: React Native, Flutter
+  // API: GraphQL, gRPC, REST
+  // Low-Code: OutSystems, Power Platform
+  
+  // 3. Software Development
+  // Development Stack:
+  // Modern Frameworks:
+  // Frontend: Next.js, Nuxt.js, SvelteKit
+  // Backend: NestJS, FastAPI, Spring Boot
+  // Testing: Jest, Cypress, Playwright
+  
+  // UI/UX: Figma, Adobe XD
+  // Performance: Lighthouse, WebPageTest4. DevOps & Automation
+  
+  // Tools & Platforms:
+  // CI/CD: GitHub Actions, GitLab CI, ArgoCD
+  // Infrastructure: Terraform, Pulumi, CloudFormation
+  // Monitoring: Prometheus, Grafana, DataDog
+  // Log Management: ELK Stack, Loki
+  // Container Orchestration: Kubernetes, Docker Swarm
+  
+  // 5. Data & Analytics
+  // Technologies:
+  // Big Data: Apache Spark, Hadoop
+  // Data Warehousing: Snowflake, BigQuery
+  // ML/AI: TensorFlow, PyTorch
+  // Stream Processing: Apache Kafka, Apache Flink
+  // Visualization: Power BI, Tableau
+  
+  // 6. Cybersecurity
+  // Security Stack:
+  // IAM: Okta, Keycloak
+  // SIEM: Splunk, IBM QRadar
+  // EDR: CrowdStrike, SentinelOne
+  // Cloud Security: AWS SecurityHub, Azure Sentinel
+  // Compliance: AWS Config, Azure Policy
+  
+  
 ]

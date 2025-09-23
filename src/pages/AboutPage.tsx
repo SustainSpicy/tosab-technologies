@@ -17,7 +17,7 @@ const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="order-2 lg:order-1">
-              <h1 className="text-4xl lg:text-5xl font-bold mb-8" style={{ color: '#454545' }}>
+              <h1 className="text-4xl lg:text-5xl  mb-8" style={{ color: '#454545' }}>
                 About US
               </h1>
               <div className="space-y-6 text-lg leading-relaxed" style={{ color: '#454545' }}>
@@ -62,7 +62,7 @@ const AboutPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Our Mission */}
             <div className="text-white">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              <h2 className="text-3xl lg:text-4xl mb-6">
                 Our Mission
               </h2>
               <p className="text-lg leading-relaxed opacity-90">
@@ -74,7 +74,7 @@ const AboutPage: React.FC = () => {
 
             {/* Our Vision */}
             <div className="text-white">
-              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              <h2 className="text-3xl lg:text-4xl mb-6">
                 Our Vision
               </h2>
               <p className="text-lg leading-relaxed opacity-90">

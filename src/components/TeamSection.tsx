@@ -7,14 +7,14 @@ const TeamSection: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#454545' }}>
+          <h2 className="text-3xl lg:text-4xl  mb-6" style={{ color: '#454545' }}>
             Meet Our Team Of Creators, Designers,
           </h2>
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: '#454545' }}>
+          <h2 className="text-3xl lg:text-4xl  mb-6" style={{ color: '#454545' }}>
             Developers, and World-Class Problem Solvers
           </h2>
           <div className="mt-8">
-            <p className="text-lg font-semibold mb-2" style={{ color: '#2E75B5' }}>
+            <p className="text-lg mb-2" style={{ color: '#2E75B5' }}>
               The minds behind the mission.
             </p>
             <p className="text-base" style={{ color: '#6B7280' }}>
@@ -103,7 +103,7 @@ const TeamSection: React.FC = () => {
               </div>
 
               {/* Action Button for Available Positions */}
-              {member.name === "Position Available" && (
+              {/* {member.name === "Position Available" && (
                 <button
                   className="mt-4 px-6 py-2 rounded-lg font-semibold text-sm transition-colors"
                   style={{
@@ -115,7 +115,7 @@ const TeamSection: React.FC = () => {
                 >
                   Apply Now
                 </button>
-              )}
+              )} */}
             </div>
           ))}
         </div>
@@ -130,7 +130,7 @@ const TeamSection: React.FC = () => {
               We're always looking for passionate individuals who want to make a difference in Africa's digital transformation journey.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
+              {/* <button
                 className="px-8 py-3 rounded-lg font-semibold transition-colors"
                 style={{
                   backgroundColor: '#2E75B5',
@@ -140,7 +140,7 @@ const TeamSection: React.FC = () => {
                 onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#2E75B5'}
               >
                 View Open Positions
-              </button>
+              </button> */}
               <button
                 className="px-8 py-3 rounded-lg font-semibold transition-colors"
                 style={{

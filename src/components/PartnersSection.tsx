@@ -3,7 +3,7 @@ import { partners } from '../data/partnersData'
 
 const PartnersSection: React.FC = () => {
   return (
-    <div className="w-full">
+    <div className="w-full bg-[#e8e8e8]">
       {/* Blue bar background matching the image */}
       <div 
         className="w-full py-6 rounded-lg "
