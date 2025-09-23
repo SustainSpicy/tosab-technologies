@@ -47,7 +47,7 @@ const IndustriesPage: React.FC = () => {
       <div className="w-full" style={{
               backgroundColor: '#F8F9FA'
             }}>
-        {industries.slice(1).map((industry, index) => (
+        {industries.slice(1).map((industry) => (
           <section
             key={industry.title}
             className="w-full py-16 px-6 lg:px-20"

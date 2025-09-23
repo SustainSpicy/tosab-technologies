@@ -1,7 +1,7 @@
 import React from 'react'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
-import { coreSolutions, industries, expectations } from '../data/solutionsData'
+import { coreSolutions, expectations } from '../data/solutionsData'
 
 const SolutionsPage: React.FC = () => {
   return (

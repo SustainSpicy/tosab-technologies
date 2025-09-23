@@ -54,7 +54,7 @@ const ServicesPage: React.FC = () => {
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {detailedServices.map((service, index) => (
+            {detailedServices.map((service) => (
               <div
                 key={service.id}
                 className="bg-white rounded-xl p-8 shadow-sm hover:shadow-md transition-all duration-300 border"
