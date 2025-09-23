@@ -247,7 +247,7 @@ const ContactPage: React.FC = () => {
                     <input
                       type="file"
                       className="hidden"
-                      accept=".pdf,.doc,.docx,.txt"
+                      accept=".pdf,.doc,.docx,.txt,.jpg,.png,.jpeg"
                     />
                   </label>
                 </div>
