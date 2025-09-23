@@ -1,25 +1,25 @@
-import React, {  useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import TosabLogo from './TosabLogo'
-// import { navigationItems } from '../data/navigationData'
+import { navigationItems } from '../data/navigationData'
 
 const Navigation: React.FC = () => {
-  // const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
-  // const handleMouseEnter = (itemLabel: string) => {
-  //   if (hoverTimeoutRef.current) {
-  //     clearTimeout(hoverTimeoutRef.current)
-  //   }
-  //   setHoveredItem(itemLabel)
-  // }
+  const handleMouseEnter = (itemLabel: string) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current)
+    }
+    setHoveredItem(itemLabel)
+  }
 
-  // const handleMouseLeave = () => {
-  //   hoverTimeoutRef.current = setTimeout(() => {
-  //     setHoveredItem(null)
-  //   }, 150) // Small delay to allow moving to dropdown
-  // }
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setHoveredItem(null)
+    }, 150) // Small delay to allow moving to dropdown
+  }
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -45,7 +45,78 @@ const Navigation: React.FC = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-   
+        {navigationItems.map((item) => (
+          <div
+            key={item.label}
+            className="relative"
+            onMouseEnter={() => handleMouseEnter(item.label)}
+            onMouseLeave={handleMouseLeave}
+          >
+            {item.dropdown ? (
+              <>
+                {/* Dropdown trigger - can be both link and dropdown */}
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    className="flex items-center transition-colors"
+                    style={{ color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF' }}
+                  >
+                    {item.label}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </Link>
+                ) : (
+                  <button 
+                    className="flex items-center transition-colors" 
+                    style={{ color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF' }}
+                  >
+                    {item.label}
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                )}
+                {/* Dropdown menu */}
+                {hoveredItem === item.label && (
+                  <>
+                    {/* Invisible bridge to prevent hover gap */}
+                    <div className="absolute top-full left-0 w-80 h-2 bg-transparent z-40"></div>
+                    <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                      <div className="px-4 py-2">
+                        <h3 className="text-sm font-semibold mb-2" style={{ color: '#454545' }}>
+                          {item.label}
+                        </h3>
+                        <div className="space-y-1">
+                          {item.dropdown.map((dropdownItem) => (
+                            <Link
+                              key={dropdownItem.label}
+                              to={dropdownItem.href}
+                              className="block px-3 py-2 text-sm rounded-md transition-colors hover:bg-gray-50"
+                              style={{ color: '#6B7280' }}
+                              onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.color = '#2E75B5'}
+                              onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.color = '#6B7280'}
+                            >
+                              {dropdownItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </>
+            ) : (
+              <Link
+                to={item.href || '#'}
+                className="transition-colors"
+                style={{ color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF' }}
+              >
+                {item.label}
+              </Link>
+            )}
+          </div>
+        ))}
 
         {/* Search Button */}
         <button
