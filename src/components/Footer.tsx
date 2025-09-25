@@ -35,9 +35,10 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               {/* Facebook */}
               <a 
-                href="#" 
+                href="https://www.facebook.com/share/17Q2Ja6EzE/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
-            
                 aria-label="Facebook"
               >
                 <img src="/facebook.png" alt="Facebook" className="w-8 h-8 text-white" />
@@ -45,19 +46,21 @@ const Footer: React.FC = () => {
 
               {/* Twitter/X */}
               <a 
-                href="#" 
+                href="https://x.com/TosabMedia?t=w11vY6CQ7sNiipwAT4dtDg&s=09" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
-             
                 aria-label="Twitter/X"
               >
-              <img src="/x.png" alt="Twitter/X" className="w-8 h-8 text-white" />
+                <img src="/x.png" alt="Twitter/X" className="w-8 h-8 text-white" />
               </a>
 
               {/* Instagram */}
               <a 
-                href="#" 
+                href="https://www.instagram.com/tosabtechnologies?igsh=MzJwYmpkcTVraWx5" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full flex items-center justify-center transition-colors hover:opacity-80"
-             
                 aria-label="Instagram"
               >
                 <img src="/instagram.png" alt="Instagram" className="w-8 h-8 text-white" />
