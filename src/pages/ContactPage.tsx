@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
+import { sendContactEmail } from '../services/emailService'
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -15,17 +16,100 @@ const ContactPage: React.FC = () => {
     projectDescription: ''
   })
 
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [errors, setErrors] = useState<Record<string, string>>({})
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }))
+    }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    // You can integrate with your backend API here
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      // Check file size (max 10MB)
+      if (file.size > 10 * 1024 * 1024) {
+        setErrors(prev => ({ ...prev, file: 'File size must be less than 10MB' }))
+        return
+      }
+      setUploadedFile(file)
+      setErrors(prev => ({ ...prev, file: '' }))
+    }
   }
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {}
+
+    if (!formData.firstName.trim()) newErrors.firstName = 'First name is required'
+    if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required'
+    if (!formData.email.trim()) newErrors.email = 'Email is required'
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid'
+    if (!formData.mobileNumber.trim()) newErrors.mobileNumber = 'Mobile number is required'
+    if (!formData.role) newErrors.role = 'Role is required'
+    if (!formData.projectTitle.trim()) newErrors.projectTitle = 'Project title is required'
+    if (!formData.projectBudget) newErrors.projectBudget = 'Project budget is required'
+    if (!formData.projectDescription.trim()) newErrors.projectDescription = 'Project description is required'
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    
+    if (!validateForm()) {
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      // Create FormData for file upload
+      const formDataToSend = new FormData()
+      
+      // Add all form fields
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataToSend.append(key, value)
+      })
+      
+      // Add file if uploaded
+      if (uploadedFile) {
+        formDataToSend.append('attachment', uploadedFile)
+      }
+
+      // Send email using EmailJS
+      await sendContactEmail(formData, uploadedFile || undefined)
+      
+      setSubmitStatus('success')
+      // Reset form
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        mobileNumber: '',
+        company: '',
+        role: '',
+        projectTitle: '',
+        projectBudget: '',
+        projectDescription: ''
+      })
+      setUploadedFile(null)
+      
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
 
   return (
     <div className="min-h-screen">
@@ -79,9 +163,14 @@ const ContactPage: React.FC = () => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     placeholder="Type First Name"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className={`w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
+                      errors.firstName ? 'border-red-500' : 'border-gray-300'
+                    }`}
                     required
                   />
+                  {errors.firstName && (
+                    <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                  )}
                 </div>
 
                 {/* Last Name */}
@@ -240,31 +329,95 @@ const ContactPage: React.FC = () => {
                   <svg className="w-5 h-5" style={{ color: '#2E75B5' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
                   </svg>
-                  <label className="text-sm  cursor-pointer" style={{ color: '#2E75B5' }}>
-                    Attach File
+                  <label className="text-sm font-medium cursor-pointer" style={{ color: '#2E75B5' }}>
+                    {uploadedFile ? uploadedFile.name : 'Attach File'}
                     <input
                       type="file"
                       className="hidden"
                       accept=".pdf,.doc,.docx,.txt,.jpg,.png,.jpeg"
+                      onChange={handleFileChange}
                     />
                   </label>
+                  {uploadedFile && (
+                    <button
+                      type="button"
+                      onClick={() => setUploadedFile(null)}
+                      className="text-red-500 hover:text-red-700 transition-colors"
+                      title="Remove file"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                  )}
                 </div>
+                {errors.file && (
+                  <p className="text-red-500 text-sm mt-1">{errors.file}</p>
+                )}
+                {uploadedFile && (
+                  <div className="mt-2 text-sm" style={{ color: '#6B7280' }}>
+                    File size: {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB
+                  </div>
+                )}
               </div>
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-center pt-8">
+            <div className="flex flex-col items-center pt-8">
+              {/* Status Messages */}
+              {submitStatus === 'success' && (
+                <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.
+                  </div>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                  <div className="flex items-center">
+                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                    Sorry, there was an error sending your message. Please try again or contact us directly.
+                  </div>
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="px-12 py-4 rounded-lg text-lg transition-colors"
+                disabled={isSubmitting}
+                className={`px-12 py-4 rounded-lg font-semibold text-lg transition-colors ${
+                  isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
+                }`}
                 style={{
                   backgroundColor: '#E3AF59',
                   color: '#FFFFFF'
                 }}
-                onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#D49A3E'}
-                onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#E3AF59'}
+                onMouseEnter={(e) => {
+                  if (!isSubmitting) {
+                    (e.target as HTMLButtonElement).style.backgroundColor = '#D49A3E'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSubmitting) {
+                    (e.target as HTMLButtonElement).style.backgroundColor = '#E3AF59'
+                  }
+                }}
               >
-                Submit Now!
+                {isSubmitting ? (
+                  <div className="flex items-center justify-center">
+                    <svg className="w-5 h-5 mr-2 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    Sending...
+                  </div>
+                ) : (
+                  'Submit Now!'
+                )}
               </button>
             </div>
           </form>
