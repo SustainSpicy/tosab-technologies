@@ -59,24 +59,21 @@ const TeamSection: React.FC = () => {
                     </div>
                   </div>
                 ) : (
-                  <div className="relative">
+                  <div className="relative overflow-hidden rounded-lg">
+                    {/* Regular image */}
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-64 h-64 object-cover rounded-lg transition-shadow duration-300"
-                      style={{
-                        // border: '3px solid transparent',
-                        // borderImage: 'linear-gradient(45deg, #E3AF59, #2E75B5) 1'
-                      }}
+                      className="w-64 h-64 object-cover rounded-lg transition-opacity duration-300 group-hover:opacity-0"
                     />
-                    {/* Golden border overlay */}
-                    {/* <div 
-                      className="absolute inset-0 rounded-lg pointer-events-none"
-                      style={{
-                        border: '2px solid #E3AF59',
-                        borderRadius: '0.5rem'
-                      }}
-                    /> */}
+                    {/* Colored image (appears on hover) */}
+                    {member.coloredImage && (
+                      <img
+                        src={member.coloredImage}
+                        alt={`${member.name} colored`}
+                        className="absolute inset-0 w-64 h-64 object-cover rounded-lg transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+                      />
+                    )}
                   </div>
                 )}
               </div>
@@ -120,50 +117,6 @@ const TeamSection: React.FC = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4" style={{ color: '#2E75B5' }}>
-              Ready to Join Our Mission?
-            </h3>
-            <p className="text-lg mb-8" style={{ color: '#6B7280' }}>
-              We're always looking for passionate individuals who want to make a difference in Africa's digital transformation journey.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {/* <button
-                className="px-8 py-3 rounded-lg font-semibold transition-colors"
-                style={{
-                  backgroundColor: '#2E75B5',
-                  color: '#FFFFFF'
-                }}
-                onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#1E5A8A'}
-                onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#2E75B5'}
-              >
-                View Open Positions
-              </button> */}
-              <button
-                className="px-8 py-3 rounded-lg font-semibold transition-colors"
-                style={{
-                  border: '2px solid #E3AF59',
-                  backgroundColor: 'transparent',
-                  color: '#E3AF59'
-                }}
-                onMouseEnter={(e) => {
-                  const target = e.target as HTMLButtonElement
-                  target.style.backgroundColor = '#E3AF59'
-                  target.style.color = '#FFFFFF'
-                }}
-                onMouseLeave={(e) => {
-                  const target = e.target as HTMLButtonElement
-                  target.style.backgroundColor = 'transparent'
-                  target.style.color = '#E3AF59'
-                }}
-              >
-                Contact Us
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )

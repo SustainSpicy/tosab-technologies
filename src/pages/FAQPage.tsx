@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { faqs } from '../data/faqData'
@@ -13,9 +14,7 @@ const FAQPage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <div style={{ background: `linear-gradient(to bottom right, #2E75B5, #1E5A8A, #454545)` }}>
-        <Navigation />
-      </div>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
@@ -136,18 +135,19 @@ const FAQPage: React.FC = () => {
             Get in touch and we'll provide personalized answers to your specific questions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              className="px-8 py-3 rounded-lg font-semibold transition-colors"
+            <Link
+              to="/contact"
+              className="inline-block px-8 py-3 rounded-lg font-semibold transition-colors"
               style={{
                 backgroundColor: '#E3AF59',
                 color: '#FFFFFF'
               }}
-              onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#D49A3E'}
-              onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#E3AF59'}
+              onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.backgroundColor = '#D49A3E'}
+              onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.backgroundColor = '#E3AF59'}
             >
               Contact Our Team
-            </button>
-            <button
+            </Link>
+            {/* <button
               className="px-8 py-3 rounded-lg font-semibold transition-colors"
               style={{
                 border: '2px solid #FFFFFF',
@@ -166,7 +166,7 @@ const FAQPage: React.FC = () => {
               }}
             >
               Schedule a Call
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

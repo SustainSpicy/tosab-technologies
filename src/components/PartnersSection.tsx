@@ -3,11 +3,10 @@ import { partners } from '../data/partnersData'
 
 const PartnersSection: React.FC = () => {
   return (
-    <div className="w-full bg-[#e8e8e8]">
+    <div className="w-full" style={{ backgroundColor: '#646b70' }}>
       {/* Blue bar background matching the image */}
       <div 
-        className="w-full py-6 rounded-lg "
-        // style={{ backgroundColor: '#F8F9FA' }}
+        className="w-full py-6"
       >
         <div className="flex items-center justify-center">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">

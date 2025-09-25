@@ -82,7 +82,7 @@ const AnalyticsSection: React.FC = () => {
         </div>
 
         {/* Top Left Star */}
-        <div className="absolute top-2 left-26 animate-pulse" style={{ animationDelay: '1s' }}>\
+        <div className="absolute top-2 left-26 animate-pulse" style={{ animationDelay: '1s' }}>
           <ShootingStar className="transform rotate-90 opacity-40" />
         </div>
 

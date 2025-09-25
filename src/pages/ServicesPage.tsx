@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 import Footer from '../components/Footer'
 import { detailedServices } from '../data/servicesPageData'
@@ -7,9 +8,7 @@ const ServicesPage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <div style={{ background: `linear-gradient(to bottom right, #2E75B5, #1E5A8A, #454545)` }}>
-        <Navigation />
-      </div>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
@@ -153,7 +152,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Call to Action Section */}
-      {/* <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#2E75B5' }}>
+      <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#2E75B5' }}>
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
             Ready to Transform Your Business?
@@ -163,40 +162,42 @@ const ServicesPage: React.FC = () => {
             its digital transformation goals and drive sustainable growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              className="px-8 py-3 rounded-lg font-semibold transition-colors"
+            <Link
+              to="/contact"
+              className="inline-block px-8 py-3 rounded-lg font-semibold transition-colors"
               style={{
                 backgroundColor: '#E3AF59',
                 color: '#FFFFFF'
               }}
-              onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#D49A3E'}
-              onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#E3AF59'}
+              onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.backgroundColor = '#D49A3E'}
+              onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.backgroundColor = '#E3AF59'}
             >
               Get Free Consultation
-            </button>
-            <button
-              className="px-8 py-3 rounded-lg font-semibold transition-colors"
+            </Link>
+            <Link
+              to="/case-studies"
+              className="inline-block px-8 py-3 rounded-lg font-semibold transition-colors"
               style={{
                 border: '2px solid #FFFFFF',
                 backgroundColor: 'transparent',
                 color: '#FFFFFF'
               }}
               onMouseEnter={(e) => {
-                const target = e.target as HTMLButtonElement
+                const target = e.target as HTMLAnchorElement
                 target.style.backgroundColor = '#FFFFFF'
                 target.style.color = '#2E75B5'
               }}
               onMouseLeave={(e) => {
-                const target = e.target as HTMLButtonElement
+                const target = e.target as HTMLAnchorElement
                 target.style.backgroundColor = 'transparent'
                 target.style.color = '#FFFFFF'
               }}
             >
               View Case Studies
-            </button>
+            </Link>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Footer */}
       <Footer />

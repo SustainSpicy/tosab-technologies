@@ -91,8 +91,8 @@ const Footer: React.FC = () => {
               Quick Links
             </h4>
             <nav className="space-y-3">
-              <a 
-                href="#" 
+              <Link 
+                to="/" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"
                 style={{ color: '#6B7280' }}
               >
@@ -100,9 +100,9 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
                 Home
-              </a>
-              <a 
-                href="#" 
+              </Link>
+              <Link 
+                to="/about" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"
                 style={{ color: '#6B7280' }}
               >
@@ -110,9 +110,9 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
                 Company
-              </a>
-              <a 
-                href="#" 
+              </Link>
+              <Link 
+                to="/services" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"
                 style={{ color: '#6B7280' }}
               >
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
                 Services
-              </a>
+              </Link>
               <Link 
                 to="/privacy-policy" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"
@@ -131,8 +131,8 @@ const Footer: React.FC = () => {
                 </svg>
                 Privacy Policy
               </Link>
-              <a 
-                href="#" 
+              <Link 
+                to="/contact" 
                 className="flex items-center text-sm transition-colors hover:text-blue-600"
                 style={{ color: '#6B7280' }}
               >
@@ -140,7 +140,7 @@ const Footer: React.FC = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
                 Contact Us
-              </a>
+              </Link>
             </nav>
           </div>
 
@@ -187,8 +187,8 @@ const Footer: React.FC = () => {
                   </svg>
                 </div>
                 <div className="text-sm space-y-1" style={{ color: '#6B7280' }}>
-                  <div>+23470313197</div>
-                  <div>+23470313197</div>
+                  <div>+2347033137197</div>
+                  <div>+2348156061231</div>
                 </div>
               </div>
             </div>

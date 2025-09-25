@@ -6,9 +6,7 @@ const PrivacyPolicyPage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <div style={{ background: `linear-gradient(to bottom right, #2E75B5, #1E5A8A, #454545)` }}>
-        <Navigation />
-      </div>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>

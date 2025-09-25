@@ -7,9 +7,7 @@ const SolutionsPage: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <div style={{ background: `linear-gradient(to bottom right, #2E75B5, #1E5A8A, #454545)` }}>
-        <Navigation />
-      </div>
+      <Navigation />
 
       {/* Hero Section */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
@@ -142,11 +140,11 @@ const SolutionsPage: React.FC = () => {
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
               </svg>
               <a 
-                href="tel:+2347033197" 
+                href="tel:+2347033137197" 
                 className="text-lg font-semibold hover:underline"
                 style={{ color: '#2E75B5' }}
               >
-                +2347033197
+                +2347033137197
               </a>
             </div>
             <span className="hidden sm:block" style={{ color: '#6B7280' }}>|</span>

@@ -3,6 +3,7 @@ export interface TeamMember {
   title: string
   company: string
   image: string
+  coloredImage?: string
   bio?: string
 }
 
@@ -12,6 +13,7 @@ export const teamMembers: TeamMember[] = [
     title: "Founder, Chief Executive Officer",
     company: "Tosab Technologies",
     image: "/team/tolulope.png",
+    coloredImage: "/team/tolulope-colored.png",
     bio: "Visionary leader driving innovation in Africa's tech landscape"
   },
   {
@@ -19,13 +21,15 @@ export const teamMembers: TeamMember[] = [
     title: "Chief Technology Officer (CTO)",
     company: "Tosab Technologies", 
     image: "/team/james.png",
+    coloredImage: "/team/james-colored.png",
     bio: "Technology strategist with expertise in scalable solutions"
   },
   {
-    name: "Isreal Timilehin Oyeleke",
+    name: "Emini Oyeleke",
     title: "Technical Pre-sales Consultant/Solution Architect",
     company: "Tosab Technologies",
-    image: "/team/timilehin.png",
+    image: "/team/emini.png",
+    coloredImage: "/team/emini-colored.png",
     bio: "Expert in designing and implementing enterprise solutions"
   },
   {
@@ -33,6 +37,7 @@ export const teamMembers: TeamMember[] = [
     title: "Product Design Intern",
     company: "Tosab Technologies",
     image: "/team/ahmed.png",
+    coloredImage: "/team/ahmed-colored.png",
     bio: "Creative designer focused on user-centered product experiences"
   },
   {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { projects } from '../data/projectsData'
 
 const ProjectsSection: React.FC = () => {
@@ -27,7 +28,7 @@ const ProjectsSection: React.FC = () => {
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
-                      className="w-64 h-64 object-contain"
+                      className="w-44 h-44 object-contain"
                       style={{ maxWidth: '256px', maxHeight: '256px' }}
                     />
                   </div>
@@ -59,12 +60,13 @@ const ProjectsSection: React.FC = () => {
 
           {/* Get in Touch Button */}
           <div className="text-center">
-            <button
-              className="px-8 py-3 rounded-lg font-semibold text-white transition-colors hover:opacity-90"
+            <Link
+              to="/case-studies"
+              className="inline-block px-8 py-3 rounded-lg font-semibold text-white transition-colors hover:opacity-90"
               style={{ backgroundColor: '#E3AF59' }}
             >
               Get in Touch
-            </button>
+            </Link>
           </div>
         </div>
       </div>

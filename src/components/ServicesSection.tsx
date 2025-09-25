@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { services } from '../data/servicesData'
 
 const ServicesSection: React.FC = () => {
@@ -55,12 +56,13 @@ const ServicesSection: React.FC = () => {
 
         {/* Learn More Button */}
         <div className="text-center">
-          <button
-            className="px-8 py-3 rounded-lg font-semibold text-white transition-colors hover:opacity-90"
+          <Link
+            to="/services"
+            className="inline-block px-8 py-3 rounded-lg font-semibold text-white transition-colors hover:opacity-90"
             style={{ backgroundColor: '#E3AF59' }}
           >
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </section>

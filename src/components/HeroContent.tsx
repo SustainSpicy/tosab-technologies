@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 interface HeroContentProps {
   topic: string
@@ -23,31 +24,33 @@ const HeroContent: React.FC<HeroContentProps> = ({ topic, subTopic, body, isVisi
         
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row gap-4">
-          <button 
-            className="px-8 py-3 rounded-lg font-semibold transition-colors"
+          <Link
+            to="/services"
+            className="inline-block px-8 py-3 rounded-lg font-semibold transition-colors text-center"
             style={{ 
               backgroundColor: '#E3AF59',
               color: '#FFFFFF'
             }}
-            onMouseEnter={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#D49A3E'}
-            onMouseLeave={(e) => (e.target as HTMLButtonElement).style.backgroundColor = '#E3AF59'}
+            onMouseEnter={(e) => (e.target as HTMLAnchorElement).style.backgroundColor = '#D49A3E'}
+            onMouseLeave={(e) => (e.target as HTMLAnchorElement).style.backgroundColor = '#E3AF59'}
           >
             Explore
-          </button>
-          <button 
-            className="px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2"
+          </Link>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg font-semibold transition-colors"
             style={{ 
               border: '2px solid #FFFFFF',
               backgroundColor: 'transparent',
               color: '#FFFFFF'
             }}
             onMouseEnter={(e) => {
-              const target = e.target as HTMLButtonElement
+              const target = e.target as HTMLAnchorElement
               target.style.backgroundColor = '#FFFFFF'
               target.style.color = '#2E75B5'
             }}
             onMouseLeave={(e) => {
-              const target = e.target as HTMLButtonElement
+              const target = e.target as HTMLAnchorElement
               target.style.backgroundColor = 'transparent'
               target.style.color = '#FFFFFF'
             }}
@@ -56,7 +59,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ topic, subTopic, body, isVisi
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

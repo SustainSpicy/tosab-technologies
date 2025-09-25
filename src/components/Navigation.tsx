@@ -6,6 +6,7 @@ import { navigationItems } from '../data/navigationData'
 
 const Navigation: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [isScrolled, setIsScrolled] = useState(false)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const handleMouseEnter = (itemLabel: string) => {
@@ -21,6 +22,17 @@ const Navigation: React.FC = () => {
     }, 150) // Small delay to allow moving to dropdown
   }
 
+  // Scroll detection for sticky navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY
+      setIsScrolled(scrollPosition > 10) // Becomes sticky after scrolling 50px
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
@@ -31,7 +43,15 @@ const Navigation: React.FC = () => {
   }, [])
 
   return (
-    <nav className="relative flex items-center justify-between px-6 py-4 lg:px-20">
+    <nav 
+      className={`${isScrolled ? 'fixed' : 'relative'} top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 lg:px-20 transition-all duration-300`}
+      style={{
+        background: isScrolled 
+          ? `linear-gradient(to bottom right, rgba(46, 117, 181, 0.95), rgba(30, 90, 138, 0.95), rgba(69, 69, 69, 0.95))`
+          : `linear-gradient(to bottom right, #2E75B5, #1E5A8A)`,
+        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        boxShadow: isScrolled ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none'
+      }}>
       {/* Logo */}
       <Link to="/" className="flex items-center space-x-3">
         <div className="w-8 h-8 flex items-center justify-center">
