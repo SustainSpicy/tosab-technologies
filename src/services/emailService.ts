@@ -10,13 +10,20 @@ emailjs.init(EMAILJS_PUBLIC_KEY)
 
 export const sendContactEmail = async (formData: any, file?: File): Promise<void> => {
   try {
-    // Convert file to base64 if uploaded
+    // Convert file to base64 if uploaded and size is acceptable
     let fileAttachment = ''
     let fileName = ''
+    let fileInfo = ''
     
     if (file) {
-      fileAttachment = await convertFileToBase64(file)
-      fileName = file.name
+      // Only attach files smaller than 500KB to avoid EmailJS payload limits
+      if (file.size <= 500 * 1024) {
+        fileAttachment = await convertFileToBase64(file)
+        fileName = file.name
+        fileInfo = `File attached: ${file.name} (${(file.size / 1024).toFixed(1)}KB)`
+      } else {
+        fileInfo = `Large file mentioned: ${file.name} (${(file.size / 1024 / 1024).toFixed(1)}MB) - File too large for email attachment`
+      }
     }
 
     // Prepare template parameters for EmailJS
@@ -31,6 +38,7 @@ export const sendContactEmail = async (formData: any, file?: File): Promise<void
       message: formData.projectDescription,
       file_attachment: fileAttachment,
       file_name: fileName,
+      file_info: fileInfo,
       to_email: 'info@tosabtechnologies.com',
       reply_to: formData.email
     }

@@ -33,9 +33,12 @@ const ContactPage: React.FC = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      // Check file size (max 10MB)
-      if (file.size > 10 * 1024 * 1024) {
-        setErrors(prev => ({ ...prev, file: 'File size must be less than 10MB' }))
+      // Check file size for EmailJS (max 500KB for reliable sending)
+      if (file.size > 500 * 1024) {
+        setErrors(prev => ({ 
+          ...prev, 
+          file: 'File size must be less than 500KB for email attachment. Please compress your file or use a cloud sharing link in the description.' 
+        }))
         return
       }
       setUploadedFile(file)
@@ -324,7 +327,7 @@ const ContactPage: React.FC = () => {
               </div>
 
               {/* Attach File */}
-              <div className="mt-6">
+              {/* <div className="mt-6">
                 <div className="flex items-center space-x-2">
                   <svg className="w-5 h-5" style={{ color: '#2E75B5' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
@@ -355,11 +358,21 @@ const ContactPage: React.FC = () => {
                   <p className="text-red-500 text-sm mt-1">{errors.file}</p>
                 )}
                 {uploadedFile && (
-                  <div className="mt-2 text-sm" style={{ color: '#6B7280' }}>
-                    File size: {(uploadedFile.size / 1024 / 1024).toFixed(2)} MB
+                  <div className="mt-2 space-y-1">
+                    <div className="text-sm" style={{ color: '#6B7280' }}>
+                      File size: {(uploadedFile.size / 1024).toFixed(1)} KB
+                    </div>
+                    {uploadedFile.size > 500 * 1024 && (
+                      <div className="text-xs" style={{ color: '#D97706' }}>
+                        ⚠️ Large files cannot be attached via email. File details will be mentioned in the message.
+                      </div>
+                    )}
                   </div>
                 )}
-              </div>
+                <div className="mt-2 text-xs" style={{ color: '#9CA3AF' }}>
+                  For files larger than 500KB, please share a cloud link (Google Drive, Dropbox) in the project description.
+                </div>
+              </div> */}
             </div>
 
             {/* Submit Button */}
