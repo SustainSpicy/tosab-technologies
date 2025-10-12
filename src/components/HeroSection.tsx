@@ -26,22 +26,24 @@ const HeroSection: React.FC = () => {
   const currentHero = heroSections[currentIndex]
 
   return (
-    <section className=" px-6 py-16 lg:px-20 lg:py-24 ">
-      <div className="relative flex items-center justify-between">
-        <HeroContent
-          topic={currentHero.topic}
-          subTopic={currentHero.subTopic}
-          body={currentHero.body}
-          isVisible={isVisible}
-        />
-        <PuzzleGraphics
-          image={currentHero.image}
-          isVisible={isVisible}
-        />
+    <section className="relative min-h-screen flex flex-col justify-center px-6 py-20 lg:px-20 lg:py-32">
+      <div className="max-w-7xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[60vh]">
+          <HeroContent
+            topic={currentHero.topic}
+            subTopic={currentHero.subTopic}
+            body={currentHero.body}
+            isVisible={isVisible}
+          />
+          <PuzzleGraphics
+            image={currentHero.image}
+            isVisible={isVisible}
+          />
+        </div>
       </div>
 
-    {/* Indicators */}
-    <div className="absolute bottom-[80px] left-1/2 transform -translate-x-1/2 flex space-x-2">
+      {/* Indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
           {heroSections.map((_, index) => (
             <button
               key={index}

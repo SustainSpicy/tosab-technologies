@@ -10,15 +10,15 @@ interface HeroContentProps {
 
 const HeroContent: React.FC<HeroContentProps> = ({ topic, subTopic, body, isVisible }) => {
   return (
-    <div className="flex-1 max-w-2xl">
+    <div className="w-full">
       <div className={`transition-all duration-1000 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-        <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6" style={{ color: '#FFFFFF' }}>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-4 lg:mb-6" style={{ color: '#FFFFFF' }}>
           {topic}
         </h1>
-        <h2 className="text-3xl lg:text-5xl font-bold leading-tight mb-8" style={{ color: '#E3AF59' }}>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight mb-6 lg:mb-8" style={{ color: '#E3AF59' }}>
           {subTopic}
         </h2>
-        <p className="text-lg leading-relaxed mb-8 max-w-xl" style={{ color: '#F8FAFC' }}>
+        <p className="text-base lg:text-lg leading-relaxed mb-6 lg:mb-8 max-w-lg lg:max-w-xl" style={{ color: '#F8FAFC' }}>
           {body}
         </p>
         

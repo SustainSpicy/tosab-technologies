@@ -7,6 +7,8 @@ import { navigationItems } from '../data/navigationData'
 const Navigation: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   const handleMouseEnter = (itemLabel: string) => {
@@ -22,6 +24,15 @@ const Navigation: React.FC = () => {
     }, 150) // Small delay to allow moving to dropdown
   }
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+    setExpandedMobileItem(null) // Close any expanded items when toggling menu
+  }
+
+  const toggleMobileDropdown = (itemLabel: string) => {
+    setExpandedMobileItem(expandedMobileItem === itemLabel ? null : itemLabel)
+  }
+
   // Scroll detection for sticky navbar
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +43,38 @@ const Navigation: React.FC = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Close mobile menu on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) { // md breakpoint
+        setIsMobileMenuOpen(false)
+        setExpandedMobileItem(null)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const nav = document.querySelector('nav')
+      if (nav && !nav.contains(event.target as Node) && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false)
+        setExpandedMobileItem(null)
+      }
+    }
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMobileMenuOpen])
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -150,11 +193,93 @@ const Navigation: React.FC = () => {
       </div>
 
       {/* Mobile menu button */}
-      <button className="md:hidden" style={{ color: '#FFFFFF' }}>
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+      <button 
+        className="md:hidden transition-colors" 
+        style={{ color: '#FFFFFF' }}
+        onClick={toggleMobileMenu}
+        aria-label="Toggle mobile menu"
+      >
+        {isMobileMenuOpen ? (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
       </button>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-white shadow-lg border-t border-gray-200 md:hidden z-40">
+          <div className="py-4">
+            {navigationItems.map((item) => (
+              <div key={item.label}>
+                {item.dropdown ? (
+                  <>
+                    {/* Mobile dropdown trigger */}
+                    <button
+                      onClick={() => toggleMobileDropdown(item.label)}
+                      className="w-full flex items-center justify-between px-6 py-3 text-left transition-colors hover:bg-gray-50"
+                      style={{ color: '#454545' }}
+                    >
+                      <span className="font-medium">{item.label}</span>
+                      <svg 
+                        className={`w-4 h-4 transition-transform ${
+                          expandedMobileItem === item.label ? 'rotate-180' : ''
+                        }`}
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    
+                    {/* Mobile dropdown items */}
+                    {expandedMobileItem === item.label && (
+                      <div className="bg-gray-50 border-t border-gray-200">
+                        {item.dropdown.map((dropdownItem) => (
+                          <Link
+                            key={dropdownItem.label}
+                            to={dropdownItem.href}
+                            className="block px-8 py-3 text-sm transition-colors hover:bg-gray-100"
+                            style={{ color: '#6B7280' }}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {dropdownItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    to={item.href || '#'}
+                    className="block px-6 py-3 font-medium transition-colors hover:bg-gray-50"
+                    style={{ color: '#454545' }}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
+            
+            {/* Mobile Search */}
+            <div className="px-6 py-3 border-t border-gray-200 mt-2">
+              <button
+                className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-blue-600"
+                style={{ color: '#6B7280' }}
+              >
+                <Search size={16} />
+                <span>Search</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   )
 }
