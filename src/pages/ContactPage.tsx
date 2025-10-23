@@ -30,21 +30,21 @@ const ContactPage: React.FC = () => {
     }
   }
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      // Check file size for EmailJS (max 500KB for reliable sending)
-      if (file.size > 500 * 1024) {
-        setErrors(prev => ({ 
-          ...prev, 
-          file: 'File size must be less than 500KB for email attachment. Please compress your file or use a cloud sharing link in the description.' 
-        }))
-        return
-      }
-      setUploadedFile(file)
-      setErrors(prev => ({ ...prev, file: '' }))
-    }
-  }
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0]
+  //   if (file) {
+  //     // Check file size for EmailJS (max 500KB for reliable sending)
+  //     if (file.size > 500 * 1024) {
+  //       setErrors(prev => ({ 
+  //         ...prev, 
+  //         file: 'File size must be less than 500KB for email attachment. Please compress your file or use a cloud sharing link in the description.' 
+  //       }))
+  //       return
+  //     }
+  //     setUploadedFile(file)
+  //     setErrors(prev => ({ ...prev, file: '' }))
+  //   }
+  // }
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {}
