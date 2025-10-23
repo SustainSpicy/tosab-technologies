@@ -118,24 +118,25 @@ const ContactPage: React.FC = () => {
     <div className="min-h-screen">
       {/* Navigation */}
       <Navigation />
-  {/* Hero Section */}
-      <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
-        <div className="max-w-7xl mx-auto">
+
+      {/* Hero Section */}
+      <section className="w-full  pt-6 px-6 lg:px-20" style={{ backgroundColor: '#F8F9A' }}>
+        <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="order-2 lg:order-1">
-              <h1 className="text-4xl lg:text-5xl  mb-8" style={{ color: '#454545' }}>
+              <h1 className="text-xl lg:text-2xl mb-8" style={{ color: '#454545' }}>
                 Let's Discuss Your Opportunity
               </h1>
             </div>
 
             {/* Right Image */}
-            <div className="order-1 lg:order-2 flex justify-center">
+            <div className="order-1 lg:order-2 flex justify-center lg:justify-center">
               <div className="relative">
                 <img
                   src="/support.png"
                   alt="Customer support representative ready to help with your project"
-                  className="w-full max-w-md lg:max-w-lg h-auto object-contain"
+                  className="w-4 sm:w-20 lg:w-36 h-auto object-contain"
                 />
               </div>
             </div>
