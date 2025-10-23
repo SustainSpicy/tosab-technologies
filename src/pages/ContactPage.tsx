@@ -118,8 +118,7 @@ const ContactPage: React.FC = () => {
     <div className="min-h-screen">
       {/* Navigation */}
       <Navigation />
-
-      {/* Hero Section */}
+  {/* Hero Section */}
       <section className="w-full py-16 px-6 lg:px-20" style={{ backgroundColor: '#F8F9FA' }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

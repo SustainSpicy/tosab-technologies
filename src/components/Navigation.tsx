@@ -1,15 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import TosabLogo from './TosabLogo'
 import { navigationItems } from '../data/navigationData'
 
 const Navigation: React.FC = () => {
+  const location = useLocation()
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null)
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  // Helper function to check if a nav item is active
+  const isActive = (item: typeof navigationItems[0]) => {
+    // Check if current path matches item href
+    if (item.href && location.pathname === item.href) {
+      return true
+    }
+    // Check if current path matches any dropdown item
+    if (item.dropdown) {
+      return item.dropdown.some(dropdownItem => location.pathname === dropdownItem.href)
+    }
+    return false
+  }
 
   const handleMouseEnter = (itemLabel: string) => {
     if (hoverTimeoutRef.current) {
@@ -108,38 +122,48 @@ const Navigation: React.FC = () => {
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-8">
-        {navigationItems.map((item) => (
-          <div
-            key={item.label}
-            className="relative"
-            onMouseEnter={() => handleMouseEnter(item.label)}
-            onMouseLeave={handleMouseLeave}
-          >
-            {item.dropdown ? (
-              <>
-                {/* Dropdown trigger - can be both link and dropdown */}
-                {item.href ? (
-                  <Link
-                    to={item.href}
-                    className="flex items-center transition-colors"
-                    style={{ color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF' }}
-                  >
-                    {item.label}
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </Link>
-                ) : (
-                  <button 
-                    className="flex items-center transition-colors" 
-                    style={{ color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF' }}
-                  >
-                    {item.label}
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                )}
+        {navigationItems.map((item) => {
+          const active = isActive(item)
+          return (
+            <div
+              key={item.label}
+              className="relative flex flex-col items-center"
+              onMouseEnter={() => handleMouseEnter(item.label)}
+              onMouseLeave={handleMouseLeave}
+            >
+              {item.dropdown ? (
+                <>
+                  {/* Dropdown trigger - can be both link and dropdown */}
+                  {item.href ? (
+                    <Link
+                      to={item.href}
+                      className="flex items-center transition-colors"
+                      style={{ 
+                        color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF',
+                        fontWeight: active ? '700' : '400',
+                        opacity: active ? 1 : 0.7
+                      }}
+                    >
+                      {item.label}
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </Link>
+                  ) : (
+                    <button 
+                      className="flex items-center transition-colors" 
+                      style={{ 
+                        color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF',
+                        fontWeight: active ? '700' : '400',
+                        opacity: active ? 1 : 0.7
+                      }}
+                    >
+                      {item.label}
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                  )}
                 {/* Dropdown menu */}
                 {hoveredItem === item.label && (
                   <>
@@ -173,13 +197,26 @@ const Navigation: React.FC = () => {
               <Link
                 to={item.href || '#'}
                 className="transition-colors"
-                style={{ color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF' }}
+                style={{ 
+                  color: hoveredItem === item.label ? '#E3AF59' : '#FFFFFF',
+                  fontWeight: active ? '700' : '400',
+                  opacity: active ? 1 : 0.7
+                }}
               >
                 {item.label}
               </Link>
             )}
+            
+            {/* Active indicator dot */}
+            {active && (
+              <div 
+                className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 rounded-full transition-opacity"
+                style={{ backgroundColor: '#E3AF59' }}
+              />
+            )}
           </div>
-        ))}
+        )
+        })}
 
         {/* Search Button */}
         {/* <button
