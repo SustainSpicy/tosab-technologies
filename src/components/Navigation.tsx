@@ -182,14 +182,14 @@ const Navigation: React.FC = () => {
         ))}
 
         {/* Search Button */}
-        <button
+        {/* <button
           className="transition-colors"
           style={{ color: '#FFFFFF' }}
           onMouseEnter={(e) => (e.target as HTMLButtonElement).style.color = '#E3AF59'}
           onMouseLeave={(e) => (e.target as HTMLButtonElement).style.color = '#FFFFFF'}
         >
           <Search size={20} />
-        </button>
+        </button> */}
       </div>
 
       {/* Mobile menu button */}
