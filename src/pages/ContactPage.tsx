@@ -475,7 +475,7 @@ const ContactPage: React.FC = () => {
                 </svg>
                 <div>
                   <p className="text-sm font-medium" style={{ color: '#454545' }}>
-                    +234 703 131 97
+                    +234 7033 137 197
                   </p>
                 </div>
               </div>
